@@ -1,0 +1,17 @@
+@for (producto of productos; track producto.id) {
+
+  @if (producto.restauranteId === restauranteId) {
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        {{ producto.nombre }}
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Precio: ${{ producto.precio }}
+    </ion-card-content>
+  </ion-card>
+  }
+
+}
