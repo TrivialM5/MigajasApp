@@ -1,0 +1,7 @@
+{
+  "name": "migajasApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

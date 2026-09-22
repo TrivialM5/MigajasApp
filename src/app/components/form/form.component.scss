@@ -1,0 +1,33 @@
+.login-content {
+  --background: #658771;
+}
+
+.form-container {
+  width: 90%;
+  max-width: 600px;
+  min-height: 100%;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-wrapper {
+  width: 100%;
+  padding: 32px 24px;
+  border-radius: 20px;
+  background: white;
+}
+
+.input-item {
+  --border-radius: 12px;
+  --border-color: var(--color-verde);
+  --background: #eaffcd;
+  --padding-start: 12px;
+  margin-bottom: 12px;
+}
+.checkbox {
+    margin: 20px 0;
+}
+

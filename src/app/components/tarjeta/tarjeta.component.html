@@ -1,0 +1,34 @@
+<ion-card>
+  @if (!mostrarProductos) {
+    <ion-card-header>
+      <ion-card-title>
+        {{ restaurante.nombre }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ restaurante.direccion }}
+    </ion-card-content>
+    <ion-button (click)="verProductos()">
+        Ver productos
+      </ion-button>
+  }
+  @if (mostrarProductos) {
+    <ion-card-header>
+      <ion-card-title>
+        {{ restaurante.nombre }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      @for (producto of productos; track producto.id) {
+        @if (producto.restauranteId === restaurante.restauranteId) {
+          <p>
+            {{ producto.nombre }} - ${{ producto.precio }}
+          </p>
+        }
+      }
+      <ion-button (click)="verProductos()">
+        Ocultar productos
+      </ion-button>
+    </ion-card-content>
+  }
+</ion-card>
