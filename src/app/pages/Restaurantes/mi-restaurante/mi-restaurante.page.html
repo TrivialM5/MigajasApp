@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Mi restaurante</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  @if (!miRestaurante) {
+
+    <h2>Crea tu restaurante</h2>
+    <app-form-restaurante (restauranteCreado)="guardarRestaurante($event)"></app-form-restaurante>
+
+  } @else {
+
+    <h2>{{ miRestaurante.nombre }}</h2>
+    <p>{{ miRestaurante.direccion }}</p>
+
+    <h3>Agregar producto</h3>
+    <app-form-producto [restauranteId]="miRestaurante.id" (productoCreado)="agregarProducto($event)"></app-form-producto>
+
+    <h3>Mis productos</h3>
+    @for (producto of productosPropios; track producto.id) {
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ producto.nombre }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Precio: ${{ producto.precio }}
+        </ion-card-content>
+      </ion-card>
+    }
+
+  }
+
+</ion-content>

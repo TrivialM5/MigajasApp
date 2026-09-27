@@ -22,13 +22,11 @@ export class RestaurantePage implements OnInit {
   restaurantes : restaurante[] = [
     {
       id: 1,
-      restauranteId: 101,
       nombre: 'El sabor',
       direccion: 'una calle',
     }, 
     {
       id: 2,
-      restauranteId: 102,
       nombre: 'El buen sabor',
       direccion: 'otra calle',
     }

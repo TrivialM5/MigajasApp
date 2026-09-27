@@ -26,25 +26,25 @@ export class TarjetaComponent  implements OnInit {
    productos : producto[] = [
       {
         id: 1,
-        restauranteId: 101,
+        restauranteId: 1,
         nombre: 'Pizza',
         precio: '12000'
       },
       {
         id: 2,
-        restauranteId: 101,
+        restauranteId: 1,
         nombre: 'Pollo',
         precio: '11000'
       },
       {
         id: 3,
-        restauranteId: 102,
+        restauranteId: 2,
         nombre: 'Perro',
         precio: '12000'
       },
       {
         id: 4,
-        restauranteId: 102,
+        restauranteId: 2,
         nombre: 'Choriperro',
         precio: '12000'
       }

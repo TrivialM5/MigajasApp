@@ -20,7 +20,7 @@
     </ion-card-header>
     <ion-card-content>
       @for (producto of productos; track producto.id) {
-        @if (producto.restauranteId === restaurante.restauranteId) {
+        @if (producto.restauranteId === restaurante.id) {
           <p>
             {{ producto.nombre }} - ${{ producto.precio }}
           </p>
