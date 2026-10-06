@@ -4,33 +4,38 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="login-content">
 
   @if (!miRestaurante) {
-
-    <h2>Crea tu restaurante</h2>
     <app-form-restaurante (restauranteCreado)="guardarRestaurante($event)"></app-form-restaurante>
-
   } @else {
+    <ion-card class="tarjeta-restaurante">
+      <div class="tarjeta-imagen">
+        <img [src]="miRestaurante.imagen" [alt]="miRestaurante.nombre"></div>
 
-    <h2>{{ miRestaurante.nombre }}</h2>
-    <p>{{ miRestaurante.direccion }}</p>
+      <div class="tarjeta-texto">
+        <h2>{{ miRestaurante.nombre }}</h2>
+        <p>{{ miRestaurante.direccion }}</p>
+      </div>
+    </ion-card>
 
-    <h3>Agregar producto</h3>
     <app-form-producto [restauranteId]="miRestaurante.id" (productoCreado)="agregarProducto($event)"></app-form-producto>
 
-    <h3>Mis productos</h3>
-    @for (producto of productosPropios; track producto.id) {
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>{{ producto.nombre }}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Precio: ${{ producto.precio }}
-        </ion-card-content>
-      </ion-card>
-    }
+    <h3 class="ion-text-center">Mis productos</h3>
+    <div class="grilla-productos">
+      @for (producto of productosPropios; track producto.id) {
+        <ion-card class="tarjeta-producto">
+          <div class="producto-imagen">
+            <img src="assets/img/test.png" [alt]="producto.nombre">
+          </div>
 
+          <div class="producto-texto">
+            <h3>{{ producto.nombre }}</h3>
+            <p>${{ producto.precio }}</p>
+          </div>
+        </ion-card>
+      }
+    </div>
   }
 
 </ion-content>

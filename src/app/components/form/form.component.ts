@@ -11,6 +11,7 @@ import { IonButton, IonInput, IonItem, IonList, IonContent, IonLabel, IonCheckbo
   styleUrls: ['./form.component.scss'],
   imports: [FormsModule, IonButton, IonInput, IonItem, IonList, IonContent, IonLabel, IonCheckbox]
 })
+
 export class FormComponent {
 
   mostrarApto = false;

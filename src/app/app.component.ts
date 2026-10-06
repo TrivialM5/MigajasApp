@@ -16,7 +16,7 @@ export class AppComponent {
     { title: 'Restaurantes', url: 'restaurante', icon: 'mail' },
     { title: 'Favoritos', url: '/folder/Outbox', icon: 'paper-plane' },
     { title: 'Ajustes', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Promociones', url: '/folder/Archived', icon: 'archive' },
+    { title: 'Tengo un restaurante', url: 'mi-restaurante', icon: 'archive' }, 
   ];
  // protected readonly labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {

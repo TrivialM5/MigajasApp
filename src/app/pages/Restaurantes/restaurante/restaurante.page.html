@@ -1,19 +1,16 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Restaurante</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="restaurantes-content">
 
-<ion-content [fullscreen]="true">
+  <div class="fondo-blur"></div>
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">restaurante</ion-title>
     </ion-toolbar>
   </ion-header>
+
   <div class="grilla-restaurantes">
-  @for (restaurante of restaurantes; track restaurante.id) {
-  <app-tarjeta [restaurante]="restaurante"></app-tarjeta>
-  }
+    @for (restaurante of restaurantes; track restaurante.id) {
+      <app-tarjeta [restaurante]="restaurante"></app-tarjeta>
+    }
   </div>
-  
 </ion-content>

@@ -1,86 +1,91 @@
 <ion-content class="login-content">
-
   <div class="form-container">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>Bienvenido</h1>
+        <p>Ingresa tus datos para continuar</p>
+      </div>
 
-    <ion-list class="login-wrapper">
-
-      @if (esRegistro) {
-        <ion-item fill="outline" class="input-item">
-          <ion-label position="floating">Nombre</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-      }
-
-      <ion-item class="input-item">
-        <ion-label position="floating">Correo</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-
-      <ion-item class="input-item">
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-
-      @if (esRegistro) {
-
-        <div>
-          <ion-item class="input-item">
-            <ion-label position="floating">Telefono</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-
-          <ion-item class="input-item">
-            <ion-label position="floating">Direccion</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-
-          <ion-item class="input-item">
-            <ion-label position="floating">Localidad</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-
-          <ion-item class="input-item">
-            <ion-label position="floating">Barrio</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-        </div>
-
-        <ion-checkbox class="checkbox" justify="space-between" (ionChange)="camEstado()">
-          Vives en torre o conjunto?
-        </ion-checkbox>
-
-        @if (mostrarApto) {
-          <ion-item class="input-item">
-            <ion-label position="floating">Conjunto</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-
-          <ion-item class="input-item">
-            <ion-label position="floating">Torre o edificio</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-
-          <ion-item class="input-item">
-            <ion-label position="floating">Numero de vivienda</ion-label>
+      <ion-list class="login-wrapper">
+        @if (esRegistro) {
+          <ion-item fill="outline" class="input-item">
+            <ion-label position="floating">Nombre</ion-label>
             <ion-input></ion-input>
           </ion-item>
         }
-        
-        <ion-checkbox class="checkbox" justify="space-between" (ionChange)="mostarInfoAdi()">
-          Agregar mas informacion
-        </ion-checkbox>
 
-        <ion-item class="input-item">
-          <ion-input
-            label="Informacion Adicional"
-            [disabled]="infoAdi">
-          </ion-input>
+        <ion-item fill="outline" class="input-item">
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input></ion-input>
         </ion-item>
 
-      }
+        <ion-item fill="outline" class="input-item">
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
 
-    </ion-list>
+        @if (esRegistro) {
 
+          <div class="extra-fields">
+
+            <ion-item fill="outline" class="input-item">
+              <ion-label position="floating">Telefono</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+
+            <ion-item fill="outline" class="input-item">
+              <ion-label position="floating">Direccion</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+
+            <ion-item fill="outline" class="input-item">
+              <ion-label position="floating">Localidad</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+
+            <ion-item fill="outline" class="input-item">
+              <ion-label position="floating">Barrio</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+
+          </div>
+
+          <ion-checkbox
+            class="checkbox"
+            justify="space-between"
+            (ionChange)="camEstado()">
+            Vives en torre o conjunto?
+          </ion-checkbox>
+
+          @if (mostrarApto) {
+
+            <div class="extra-fields">
+
+              <ion-item fill="outline" class="input-item">
+                <ion-label position="floating">Conjunto</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+
+              <ion-item fill="outline" class="input-item">
+                <ion-label position="floating">Torre o edificio</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+
+              <ion-item fill="outline" class="input-item">
+                <ion-label position="floating">Numero de vivienda</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+
+            </div>
+          }
+
+          <ion-checkbox class="checkbox" justify="space-between" (ionChange)="mostarInfoAdi()">Agregar mas informacion</ion-checkbox>
+
+          <ion-item fill="outline" class="input-item">
+            <ion-input label="Informacion Adicional" [disabled]="infoAdi"></ion-input>
+          </ion-item>
+        }
+      </ion-list>
+    </div>
   </div>
-
 </ion-content>

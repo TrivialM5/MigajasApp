@@ -1,5 +1,21 @@
+.restaurantes-content {
+  --background: transparent;
+}
+
+.fondo-blur {
+  position: fixed;
+  inset: 0;
+  background: url('/assets/img/Assets_CalentadoApp.png') center center / cover no-repeat;
+  filter: blur(3px);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
 .grilla-restaurantes {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  padding: 20px;
 }

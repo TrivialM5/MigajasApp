@@ -1,0 +1,77 @@
+.login-content {
+  --background: url('/assets/img/Assets_CalentadoApp.png') center center / cover no-repeat;
+}
+
+.tarjeta-restaurante {
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 12px;
+  border-radius: 15px;
+}
+
+.tarjeta-imagen {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tarjeta-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tarjeta-texto {
+  padding: 10px 5px;
+}
+
+.tarjeta-texto h2 {
+  margin-bottom: 5px;
+}
+
+.tarjeta-texto p {
+  margin-top: 0;
+}
+
+
+.grilla-productos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 10px 20px;
+}
+
+.tarjeta-producto {
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.producto-imagen {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.producto-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.producto-texto {
+  padding: 5px;
+}
+
+.producto-texto h3 {
+  margin-bottom: 5px;
+}
+
+.producto-texto p {
+  margin-top: 0;
+  font-weight: bold;
+}

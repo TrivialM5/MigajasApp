@@ -1,10 +1,18 @@
+ion-split-pane {
+  --side-width: 400px;
+}
+
+ion-menu {
+  --width: 20px;
+}
+
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
 
 ion-menu.md ion-content {
-  --padding-start: 8px;
-  --padding-end: 8px;
+  --padding-start: 20px;
+  --padding-end: 20px;
   --padding-top: 20px;
   --padding-bottom: 20px;
 }

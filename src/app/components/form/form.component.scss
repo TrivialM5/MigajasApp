@@ -1,33 +1,75 @@
 .login-content {
-  --background: #658771;
+  --background: url('/assets/img/Assets_CalentadoApp.png') center center / cover no-repeat;
 }
 
 .form-container {
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
   min-height: 100%;
-  margin: auto;
+  padding: 30px 20px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.login-card {
+  width: 100%;
+  max-width: 500px;
+
+  padding: 35px 30px;
+
+  background: #ffffff;
+  border-radius: 24px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.login-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2f4f3b;
+}
+
+.login-header p {
+  margin: 8px 0 0;
+  color: #6b6b6b;
+  font-size: 15px;
+}
+
 .login-wrapper {
   width: 100%;
-  padding: 32px 24px;
-  border-radius: 20px;
-  background: white;
+  padding: 0;
+  background: transparent;
 }
 
 .input-item {
   --border-radius: 12px;
-  --border-color: var(--color-verde);
-  --background: #eaffcd;
-  --padding-start: 12px;
-  margin-bottom: 12px;
+  --border-color: #658771;
+  --background: #f5faef;
+  --padding-start: 14px;
+
+  margin-bottom: 16px;
 }
+
+.input-item ion-label {
+  color: #4f6656;
+}
+
 .checkbox {
-    margin: 20px 0;
+  width: 100%;
+  margin: 12px 0 20px;
+
+  --checkbox-background-checked: #658771;
+  --border-color-checked: #658771;
+}
+
+.extra-fields {
+  margin-top: 5px;
 }
 

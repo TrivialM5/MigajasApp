@@ -22,13 +22,27 @@ export class RestaurantePage implements OnInit {
   restaurantes : restaurante[] = [
     {
       id: 1,
-      nombre: 'El sabor',
+      nombre: 'Hamburguesas Krusty',
       direccion: 'una calle',
+      imagen: 'assets/img/krusty.png' 
     }, 
     {
       id: 2,
-      nombre: 'El buen sabor',
+      nombre: 'El Holandés Cocinante',
       direccion: 'otra calle',
+      imagen: 'assets/img/fish.jpg' 
+    },
+    {
+      id: 3,
+      nombre: 'Los Pollos Hermanos',
+      direccion: 'otra calle',
+      imagen: 'assets/img/pollo_hermano.jpg'
+    },
+    {
+      id: 4,
+      nombre: 'Burger Shot',
+      direccion: 'otra calle',
+      imagen: 'assets/img/burgershot.svg'
     }
   ];
 
