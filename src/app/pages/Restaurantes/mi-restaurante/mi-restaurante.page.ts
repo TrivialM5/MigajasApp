@@ -6,6 +6,7 @@ import { FormProductoComponent } from '../../../components/form-producto/form-pr
 import { restaurante } from '../../../data/interface/restaurante.interface';
 import { producto } from '../../../data/interface/producto.interface';
 import { FormRestauranteComponent } from '../../../components/form-restaurante/form-restaurante.component';
+import { RestauranteService } from '../../../data/services/restaurante-service';
 
 
 @Component({
@@ -16,15 +17,19 @@ import { FormRestauranteComponent } from '../../../components/form-restaurante/f
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, FormProductoComponent, FormRestauranteComponent, IonCard, IonCardTitle, IonCardContent, IonCardHeader]
 })
 export class MiRestaurantePage implements OnInit {
-  constructor() { }
-  ngOnInit() {
-  }
 
   miRestaurante: restaurante | null = null;
   productosPropios: producto[] = []
 
+  constructor(private restauranteService: RestauranteService) { }
+
+  ngOnInit() {
+  }
+
+  
   guardarRestaurante(nuevo : restaurante) {
     this.miRestaurante = nuevo
+    this.restauranteService.agregar(nuevo);
   }
 
   agregarProducto(nuevo : producto) {
