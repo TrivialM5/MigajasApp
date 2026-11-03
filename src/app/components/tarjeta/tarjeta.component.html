@@ -1,54 +1,20 @@
 <ion-card class="tarjeta">
 
-  <!-- CUADRO DE LA IMAGEN -->
-  <div class="tarjeta-imagen">
+  <div class="tarjeta-imagen" (click)="abrir()">
     <img [src]="restaurante.imagen" [alt]="restaurante.nombre">
   </div>
 
-  <!-- INFORMACIÓN DE LA TARJETA -->
   <div class="tarjeta-texto">
+    <h3>{{ restaurante.nombre }}</h3>
+    <p>{{ restaurante.direccion }}</p>
 
-    @if (!mostrarProductos) {
+    <div class="acciones">
+      <ion-button size="small" (click)="abrir()">Ver productos</ion-button>
 
-      <h3>
-        {{ restaurante.nombre }}
-      </h3>
-
-      <p>
-        {{ restaurante.direccion }}
-      </p>
-
-      <ion-button (click)="verProductos()">
-        Ver productos
+      <ion-button size="small" fill="clear" (click)="alternarFavorito()">
+        <ion-icon slot="icon-only" [name]="esFavorito ? 'heart' : 'heart-outline'"></ion-icon>
       </ion-button>
-
-    }
-
-    @if (mostrarProductos) {
-
-      <h3>
-        {{ restaurante.nombre }}
-      </h3>
-
-      @for (producto of productos; track producto.id) {
-
-        @if (producto.restauranteId === restaurante.id) {
-
-          <p>
-            {{ producto.nombre }} - ${{ producto.precio }}
-          </p>
-
-        }
-
-      }
-
-      <ion-button (click)="verProductos()">
-        Ocultar productos
-      </ion-button>
-
-    }
-
+    </div>
   </div>
 
 </ion-card>
-

@@ -1,34 +1,41 @@
-import { Component, EventEmitter, Input, input, OnInit, Output, output } from '@angular/core';
-import { producto } from '../../data/interface/producto.interface';
-import { IonList, IonItem, IonInput, IonButton } from '@ionic/angular';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { IonItem, IonInput, IonButton } from '@ionic/angular';
+import { producto } from '../../data/interface/producto.interface';
 
 @Component({
   selector: 'app-form-producto',
   standalone: true,
   templateUrl: './form-producto.component.html',
   styleUrls: ['./form-producto.component.scss'],
-  imports: [FormsModule, IonList, IonItem, IonInput, IonButton],
+  imports: [FormsModule, IonItem, IonInput, IonButton],
 })
-export class FormProductoComponent  implements OnInit {
-  constructor() { }
-  ngOnInit() {}
+
+export class FormProductoComponent {
 
   @Input() restauranteId!: number;
 
-  nombre: string = ''
-  precio: string = ''
+  nombre: string = '';
+  precio: number | null = null
 
   @Output() productoCreado = new EventEmitter<producto>();
 
   crear() {
+    if (this.nombre === '' || this.precio === null) {
+      return;
+    }
+    
     const nuevo: producto = {
-      id: Date.now(),
+      id: 0, 
       restauranteId: this.restauranteId,
       nombre: this.nombre,
-      precio: this.precio
-    }; 
+      precio: Number(this.precio),
+      imagen: 'assets/img/test.png'
+    };
     this.productoCreado.emit(nuevo);
+
+    this.nombre = '';
+    this.precio = null;
+
   }
 }

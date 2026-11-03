@@ -1,22 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular';
-import { FolderPage } from '../../../folder/folder.page';
 import { FormComponent } from '../../../components/form/form.component';
+import { AuthService } from '../../../data/services/auth-service';
+import { usuario } from '../../../data/interface/usuario.interface';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, FolderPage, FormComponent]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, FormComponent]
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  mensajeError: string = '';
 
   ngOnInit() {
-  }
+    this.authService.cerrarSesion();
+    }
 
+  iniciarSesion(datos: usuario) {
+    this.mensajeError = '';
+
+    this.authService.login(datos.correo, datos.contrasena).subscribe({
+      next: (u) => {
+        this.authService.guardarSesion(u);
+        this.router.navigate(['/restaurante']);
+      }, 
+      error: (err) => {
+        if (err.status === 0) {
+          this.mensajeError = 'No hay conexion al servidor'
+        } else {
+          this.mensajeError = err.error?.mensaje || 'No se pudo iniciar sesion'
+        }
+      }
+    });
+  }
 }

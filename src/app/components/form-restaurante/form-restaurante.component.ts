@@ -1,19 +1,17 @@
-import { Component, EventEmitter, OnInit, Output, output } from '@angular/core';
-import { restaurante } from '../../data/interface/restaurante.interface';
-import { IonList, IonItem, IonInput, IonButton } from '@ionic/angular';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { image } from 'ionicons/icons';
+import { IonItem, IonInput, IonButton } from '@ionic/angular';
+import { restaurante } from '../../data/interface/restaurante.interface';
 
 @Component({
   selector: 'app-form-restaurante',
   standalone: true,
   templateUrl: './form-restaurante.component.html',
   styleUrls: ['./form-restaurante.component.scss'],
-  imports: [FormsModule, IonList, IonItem, IonInput, IonButton],
+  imports: [FormsModule, IonItem, IonInput, IonButton],
 })
-export class FormRestauranteComponent  implements OnInit {
-  constructor() { }
-  ngOnInit() {}
+
+export class FormRestauranteComponent {
 
   nombre: string = '';
   direccion: string = ''
@@ -21,12 +19,16 @@ export class FormRestauranteComponent  implements OnInit {
   @Output() restauranteCreado = new EventEmitter<restaurante>();
 
   crear() {
+    if (this.nombre === '') {
+      return;
+    }
+    
     const nuevo: restaurante = {
-      id: Date.now(),
+      id: 0,
       nombre: this.nombre,
       direccion: this.direccion,
       imagen: 'assets/img/test.png'
-    };
+    }; 
     this.restauranteCreado.emit(nuevo)
   }
 }

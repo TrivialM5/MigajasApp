@@ -19,3 +19,23 @@
   gap: 20px;
   padding: 20px;
 }
+
+@media (max-width: 900px) {
+  .grilla-restaurantes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grilla-restaurantes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mensaje-error {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #b5482a;
+  font-weight: 600;
+}
