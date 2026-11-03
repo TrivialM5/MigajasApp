@@ -1,4 +1,7 @@
-import { Injectable, Service } from '@angular/core';
+import { inject, Injectable, Service } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { restaurante } from '../interface/restaurante.interface';
 
 @Injectable({
@@ -6,42 +9,25 @@ import { restaurante } from '../interface/restaurante.interface';
 })
 
 export class RestauranteService {
-    private restaurantes: restaurante[] = [
-    {
-      id: 1,
-      nombre: 'Hamburguesas Krusty',
-      direccion: 'una calle',
-      imagen: 'assets/img/krusty.png' 
-    }, 
-    {
-      id: 2,
-      nombre: 'El Holandés Cocinante',
-      direccion: 'otra calle',
-      imagen: 'assets/img/fish.jpg' 
-    },
-    {
-      id: 3,
-      nombre: 'Los Pollos Hermanos',
-      direccion: 'otra calle',
-      imagen: 'assets/img/pollo_hermano.jpg'
-    },
-    {
-      id: 4,
-      nombre: 'Burger Shot',
-      direccion: 'otra calle',
-      imagen: 'assets/img/burgershot.svg'
-    }
-];
 
-constructor() {}
+  private http = inject(HttpClient);
+  private url = environment.apiUrl + '/restaurantes';
 
-agregar(nuevo: restaurante){
-    this.restaurantes.push(nuevo)
-}
+  obtenerTodos(): Observable<restaurante[]> {
+    return this.http.get<restaurante[]>(this.url);
+  }
 
-obtenerTodos() {
-    return this.restaurantes;
-}
+  obtenerPorId(id: number): Observable<restaurante> {
+    return this.http.get<restaurante>(this.url + '/' + id);
+  } 
+
+  obtenerPorPropietario(propietarioId: number): Observable<restaurante> {
+    return this.http.get<restaurante>(this.url + '/propietario/' + propietarioId);
+  }
+
+  crear(nuevo: restaurante): Observable<restaurante> {
+    return this.http.post<restaurante>(this.url, nuevo);
+  }
 
 
 }

@@ -2,5 +2,6 @@ export interface producto {
     id: number,
     restauranteId: number,
     nombre: string,
-    precio: string
+    precio: number,
+    imagen: string
 }

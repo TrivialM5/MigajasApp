@@ -13,10 +13,7 @@
       <div class="tarjeta-imagen">
         <img [src]="miRestaurante.imagen" [alt]="miRestaurante.nombre"></div>
 
-      <div class="tarjeta-texto">
-        <h2>{{ miRestaurante.nombre }}</h2>
-        <p>{{ miRestaurante.direccion }}</p>
-      </div>
+      <div class="tarjeta-texto"><h2>{{ miRestaurante.nombre }}</h2><p>{{ miRestaurante.direccion }}</p></div>
     </ion-card>
 
     <app-form-producto [restauranteId]="miRestaurante.id" (productoCreado)="agregarProducto($event)"></app-form-producto>

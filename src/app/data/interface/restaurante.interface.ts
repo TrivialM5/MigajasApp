@@ -3,4 +3,5 @@ export interface restaurante {
     nombre: string,
     direccion: string,
     imagen: string
+    propietarioId?: number | null 
 }
