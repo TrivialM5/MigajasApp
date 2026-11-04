@@ -1,17 +1,36 @@
-@for (producto of productos; track producto.id) {
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/restaurante"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ restaurante?.nombre }}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  @if (producto.restauranteId === restauranteId) {
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>
-        {{ producto.nombre }}
-      </ion-card-title>
-    </ion-card-header>
+<ion-content [fullscreen]="true">
 
-    <ion-card-content>
-      Precio: ${{ producto.precio }}
-    </ion-card-content>
-  </ion-card>
+  @if (productos.length === 0) {
+    <p class="ion-text-center ion-padding">Este restaurante todavía no tiene productos</p>
   }
 
-}
+  <div class="grilla-productos">
+    @for (p of productos; track p.id) {
+      <app-tarjeta-producto
+        [producto]="p"
+        [cantidad]="carritoService.cantidadDe(p.id)"
+        (agregado)="agregar($event)"
+        (quitado)="quitar($event)">
+      </app-tarjeta-producto>
+    }
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Total: ${{ carritoService.total() }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/carrito">Ver carrito</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

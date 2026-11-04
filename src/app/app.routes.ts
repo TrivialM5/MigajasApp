@@ -7,11 +7,6 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'folder/:folder',
-    loadComponent: () =>
-      import('./folder/folder.page').then((m) => m.FolderPage),
-  },
-  {
     path: 'register',
     loadComponent: () => import('./pages/Auth/register/register.page').then( m => m.RegisterPage)
   },
@@ -24,13 +19,14 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/Restaurantes/restaurante/restaurante.page').then( m => m.RestaurantePage)
   },
   {
-    path: 'productos',
+    path: 'productos/:id',
     loadComponent: () => import('./pages/Productos/productos/productos.page').then( m => m.ProductosPage)
   },
   {
     path: 'mi-restaurante',
     loadComponent: () => import('./pages/Restaurantes/mi-restaurante/mi-restaurante.page').then( m => m.MiRestaurantePage)
-  },  {
+  },
+  {
     path: 'favoritos',
     loadComponent: () => import('./pages/Favoritos/favoritos/favoritos.page').then( m => m.FavoritosPage)
   },
@@ -38,5 +34,4 @@ export const routes: Routes = [
     path: 'carrito',
     loadComponent: () => import('./pages/Carrito/carrito/carrito.page').then( m => m.CarritoPage)
   },
-
 ];

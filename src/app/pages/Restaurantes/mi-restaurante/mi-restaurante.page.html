@@ -1,29 +1,45 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Mi restaurante</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="login-content">
 
+  @if (mensajeError) {
+    <p class="mensaje-error">{{ mensajeError }}</p>
+  }
+
   @if (!miRestaurante) {
     <app-form-restaurante (restauranteCreado)="guardarRestaurante($event)"></app-form-restaurante>
   } @else {
+
     <ion-card class="tarjeta-restaurante">
       <div class="tarjeta-imagen">
-        <img [src]="miRestaurante.imagen" [alt]="miRestaurante.nombre"></div>
+        <img [src]="miRestaurante.imagen" [alt]="miRestaurante.nombre">
+      </div>
 
-      <div class="tarjeta-texto"><h2>{{ miRestaurante.nombre }}</h2><p>{{ miRestaurante.direccion }}</p></div>
+      <div class="tarjeta-texto">
+        <h2>{{ miRestaurante.nombre }}</h2>
+        <p>{{ miRestaurante.direccion }}</p>
+      </div>
     </ion-card>
 
-    <app-form-producto [restauranteId]="miRestaurante.id" (productoCreado)="agregarProducto($event)"></app-form-producto>
+    <app-form-producto
+      [restauranteId]="miRestaurante.id"
+      (productoCreado)="agregarProducto($event)">
+    </app-form-producto>
 
     <h3 class="ion-text-center">Mis productos</h3>
+
     <div class="grilla-productos">
       @for (producto of productosPropios; track producto.id) {
         <ion-card class="tarjeta-producto">
           <div class="producto-imagen">
-            <img src="assets/img/test.png" [alt]="producto.nombre">
+            <img [src]="producto.imagen" [alt]="producto.nombre">
           </div>
 
           <div class="producto-texto">
@@ -34,5 +50,4 @@
       }
     </div>
   }
-
 </ion-content>

@@ -1,51 +1,62 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonButton, IonFooter } from '@ionic/angular';
+import { TarjetaProductoComponent } from '../../../components/tarjeta-producto/tarjeta-producto.component';
+import { restaurante } from '../../../data/interface/restaurante.interface';
 import { producto } from '../../../data/interface/producto.interface';
+import { RestauranteService } from '../../../data/services/restaurante-service';
+import { ProductoService } from '../../../data/services/producto-service';
+import { CarritoServiceTs } from '../../../data/services/carrito-service.ts';
 
 @Component({
   selector: 'app-productos',
+  standalone: true,
   templateUrl: './productos.page.html',
   styleUrls: ['./productos.page.scss'],
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardContent]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonButton, IonFooter, RouterLink, TarjetaProductoComponent]
 })
+
 export class ProductosPage implements OnInit {
 
-  restauranteId: number = 0;
+  @Input() id!: string;
 
+  private restauranteService = inject(RestauranteService);
+  private productoService = inject(ProductoService);
+  carritoService = inject(CarritoServiceTs);
 
-  constructor() { }
+  restaurante: restaurante | null = null;
+  productos: producto[] = [];
 
   ngOnInit() {
+
+    const restauranteId = Number(this.id);
+
+    this.restauranteService.obtenerPorId(restauranteId).subscribe({
+      next: (data) => {
+        this.restaurante = data;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+
+    this.productoService.obtenerPorRestaurante(restauranteId).subscribe({
+      next: (data) => {
+        this.productos = data;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
-  productos : producto[] = [
-    {
-      id: 1,
-      restauranteId: 1,
-      nombre: 'Pizza',
-      precio: '12000'
-    },
-    {
-      id: 2,
-      restauranteId: 1,
-      nombre: 'Pollo',
-      precio: '11000'
-    },
-    {
-      id: 3,
-      restauranteId: 2,
-      nombre: 'Perro',
-      precio: '12000'
-    },
-    {
-      id: 4,
-      restauranteId: 2,
-      nombre: 'Choriperro',
-      precio: '12000'
-    }
-  ]
-  
+
+  agregar(p: producto) {
+    this.carritoService.agregar(p);
+  }
+
+  quitar(p: producto) {
+    this.carritoService.quitar(p);
+  }
 
 
 }
