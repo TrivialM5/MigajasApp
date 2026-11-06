@@ -14,7 +14,7 @@ import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutlin
 export class AppComponent {
   protected readonly appPages = [
     { title: 'Restaurantes', url: 'restaurante', icon: 'mail' },
-    { title: 'Favoritos', url: '/folder/Outbox', icon: 'paper-plane' },
+    { title: 'Favoritos', url: '/favoritos', icon: 'heart' },
     { title: 'Ajustes', url: '/folder/Favorites', icon: 'heart' },
     { title: 'Tengo un restaurante', url: 'mi-restaurante', icon: 'archive' }, 
   ];

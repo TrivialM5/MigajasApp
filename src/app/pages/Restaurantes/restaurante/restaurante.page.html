@@ -17,7 +17,7 @@
 
   <div class="grilla-restaurantes">
     @for (r of restaurantes; track r.id) {
-      <app-tarjeta [restaurante]="r" [esFavorito]="favoritoService.esFavorito(r.id)" (seleccionado)="abrirRestaurante($event)" (favoritoCambio)="alternarFavorito($event)"></app-tarjeta>
+      <app-tarjeta [restaurante]="r" [esFavorito]="esFavorito(r.id)" (seleccionado)="abrirRestaurante($event)" (favoritoCambio)="alternarFavorito($event)"></app-tarjeta>
     }
   </div>
 

@@ -15,7 +15,7 @@ export class ProductoService {
     private url = environment.apiUrl;
 
     obtenerPorRestaurante(restauranteId: number): Observable<producto[]> {
-        return this.http.get<producto[]>(this.url + '/restaurante/' + restauranteId + '/productos');   
+        return this.http.get<producto[]>(this.url + '/restaurantes/' + restauranteId + '/productos');   
     }
     
     crear(nuevo : producto): Observable<producto> {

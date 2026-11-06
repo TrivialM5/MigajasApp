@@ -3,12 +3,13 @@
 }
 
 .fondo-blur {
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: url('/assets/img/Assets_CalentadoApp.png') center center / cover no-repeat;
   filter: blur(3px);
   transform: scale(1.05);
   z-index: 0;
+  pointer-events: none;
 }
 
 .grilla-restaurantes {
