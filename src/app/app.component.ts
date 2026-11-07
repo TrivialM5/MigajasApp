@@ -15,7 +15,7 @@ export class AppComponent {
   protected readonly appPages = [
     { title: 'Restaurantes', url: 'restaurante', icon: 'mail' },
     { title: 'Favoritos', url: '/favoritos', icon: 'heart' },
-    { title: 'Ajustes', url: '/folder/Favorites', icon: 'heart' },
+    { title: 'Carrito', url: '/carrito', icon: 'heart' },
     { title: 'Tengo un restaurante', url: 'mi-restaurante', icon: 'archive' }, 
   ];
  // protected readonly labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

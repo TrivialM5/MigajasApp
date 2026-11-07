@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, ChangeDetectorRef, NgZone } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton } from '@ionic/angular';
 import { TarjetaComponent } from '../../../components/tarjeta/tarjeta.component';
@@ -13,13 +13,11 @@ import { FavoritosService } from '../../../data/services/favoritos-service';
   styleUrls: ['./restaurante.page.scss'],
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, TarjetaComponent]
 })
-
 export class RestaurantePage implements OnInit {
 
   private restauranteService = inject(RestauranteService);
   private router = inject(Router);
   private cdr = inject(ChangeDetectorRef);
-  private ngZone = inject(NgZone);
   favoritoService = inject(FavoritosService);
 
   restaurantes: restaurante[] = [];
@@ -28,19 +26,13 @@ export class RestaurantePage implements OnInit {
   ngOnInit() {
     this.restauranteService.obtenerTodos().subscribe({
       next: (data) => {
-        this.ngZone.run(() => {
-          this.restaurantes = data;
-          this.cdr.markForCheck();
-          this.cdr.detectChanges();
-        });
-      }, 
+        this.restaurantes = data;
+        this.cdr.detectChanges();
+      },
       error: (err) => {
-        this.ngZone.run(() => {
-          console.log(err);
-          this.mensajeError = 'No se pudieron cargar los restaurantes';
-          this.cdr.markForCheck();
-          this.cdr.detectChanges();
-        });
+        console.log(err);
+        this.mensajeError = 'No se pudieron cargar los restaurantes';
+        this.cdr.detectChanges();
       }
     });
   }
@@ -56,5 +48,4 @@ export class RestaurantePage implements OnInit {
   esFavorito(id: number): boolean {
     return this.favoritoService.esFavorito(id);
   }
-
 }

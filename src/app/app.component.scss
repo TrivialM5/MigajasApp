@@ -1,11 +1,13 @@
 ion-split-pane {
-  --side-width: 400px;
+  --side-width: 280px;
+  --side-min-width: 250px;
+  --side-max-width: 320px;
 }
 
 ion-menu {
-  --width: 20px;
+  --width: 280px;
+  --min-width: 250px;
 }
-
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }

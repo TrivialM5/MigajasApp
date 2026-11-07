@@ -1,4 +1,3 @@
-import { Service } from '@angular/core';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';

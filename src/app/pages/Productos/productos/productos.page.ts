@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonButton, IonFooter } from '@ionic/angular';
 import { TarjetaProductoComponent } from '../../../components/tarjeta-producto/tarjeta-producto.component';
@@ -15,7 +15,6 @@ import { CarritoServiceTs } from '../../../data/services/carrito-service.ts';
   styleUrls: ['./productos.page.scss'],
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonButton, IonFooter, RouterLink, TarjetaProductoComponent]
 })
-
 export class ProductosPage implements OnInit {
 
   @Input() id!: string;
@@ -23,29 +22,35 @@ export class ProductosPage implements OnInit {
   private restauranteService = inject(RestauranteService);
   private productoService = inject(ProductoService);
   carritoService = inject(CarritoServiceTs);
+  private cdr = inject(ChangeDetectorRef);
 
   restaurante: restaurante | null = null;
   productos: producto[] = [];
 
   ngOnInit() {
+    console.log('id recibido:', this.id);
 
     const restauranteId = Number(this.id);
 
     this.restauranteService.obtenerPorId(restauranteId).subscribe({
       next: (data) => {
+        console.log('restaurante:', data);
         this.restaurante = data;
+        this.cdr.detectChanges();
       },
       error: (err) => {
-        console.log(err);
+        console.log('error restaurante:', err);
       }
     });
 
     this.productoService.obtenerPorRestaurante(restauranteId).subscribe({
       next: (data) => {
+        console.log('productos:', data);
         this.productos = data;
+        this.cdr.detectChanges();
       },
       error: (err) => {
-        console.log(err);
+        console.log('error productos:', err);
       }
     });
   }
@@ -57,6 +62,4 @@ export class ProductosPage implements OnInit {
   quitar(p: producto) {
     this.carritoService.quitar(p);
   }
-
-
 }
